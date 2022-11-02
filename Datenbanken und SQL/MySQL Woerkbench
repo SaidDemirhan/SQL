@@ -1,1 +1,19 @@
 Bilgisayarin arama kismina MySQL Woerkbench yaz.
+Database olusturmak icin + tusuna veya file- New model secebiliriz.
+isim vermek icin sari sekilli mydb logoya cift tiklayarak cikan secenekten isim verebiliriz.
+Tablo eklemek istersek Add Table tikladigimizda olusur
+olusan tabloya cift tiklanarak cikan secenekten tabloya isim verilebilir.
+Atribute eklemek icin Column Namenin altina gelip cift tiklanarak isim verilebilir.
+**************ATRIBUT sütunlarin adina verilen isim
+
+data tipini secebiliriz:
+INT
+VARCHAR() (stringin yaklasik aynisidir) parantez icine harf sayisi yazilir.
+DOUBLE
+
+PK -primary key - tek olmasi lazim, tablolari birbirine baglamak icin   kullanilir.
+NN - Not Null - kesinlikle dolu olmali bos olmaz
+AI -Auto Increment- otomatik olarak id in belirlenmesi
+
+
+Diyagram olusturmak icin
