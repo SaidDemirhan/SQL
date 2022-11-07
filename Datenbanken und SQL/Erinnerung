@@ -49,6 +49,11 @@ SELECT (kolon_adi) FROM (tablo_adi);
    kolon adi yerine * isareti koyarak tüm tabloyu da listeleyebiliriz.
 
 -------------------------------------------------------
+Sorgulanan verilerin büyük/kücük harf seklinde listeleme: (LOWER/UPPER)
+
+SELECT LOWER (adi), UPPER(soyadi) FROM personel;
+
+-------------------------------------------------------
 Filtreleme: (WHERE)
 
 SELECT (kolon_adi) FROM (tablo_adi) WHERE (sartimiz)
@@ -116,7 +121,7 @@ email varchar(20));
 
 --------------------------------------------------------
 
-Tabloyu güncelleme; (MODIFY)
+Tabloyu güncelleme; (MODIFY) -(UPDATE -SET)
 
 ALTER TABLE personel
 MODIFY
@@ -124,6 +129,10 @@ email varchar(25);
 
    email alaninin 20 karakterden 25 karaktere cikartmis olduk.
 
+UPDATE personel SET isim ='Abdurrahman'
+WHERE soyisim='Delice';
+
+   Eger yerini belirtmezsek tüm isimleri 'Abdurrahman' yapacaktir!
 -------------------------------------------------------
 SILME
 
@@ -141,6 +150,13 @@ Sütunu kullanim disi birakma: (SET UNUSED COLUMN)
 ALTER TABLE personel SET UNUSED COLUMN telefon_numarasi;
 
 ------------------------------------------------------
+Veri silme: (DELETE)
+
+DELETE FROM personel WHERE isim='Abdurrahman';
+
+   veya WHERE telefon_numarasi=05432659875;
+
+   tablo  kalir secece veriler silinir!
 
 
 
