@@ -300,4 +300,24 @@ TRIM
    alinan maasi 1200 e bölerek  kalani yazdirir.
       
 -------------------------------------------------------------------------   
+TARRIHLER
+   SELECT SYSDATE FROM dual;
+   tarihi getirir.
    
+   SELECT ad, soyad, (SYSDATE-kayit_tarihi)/7 AS calisilan_hafta  FROM personel WHERE isciler; 
+      iscilerin kac haftadir ista calistiklarini getirdi.
+      
+   SELECT ADD_MONTHS (SYSDATE,6)FROM dual;
+      6 ay sonraki tarihi verir.
+   
+   SELECT NEXT_DAY(SYSDATE, 'SAMSTAG') FROM dual;
+      bir sonraki cumartesi gününün tarihini getirir.
+      
+   SELECT LAST_DAY(SYSDATE) FROM dual;
+      bulunulan ayin son gününü verir.
+      
+   SELECT ROUND (SYSDATE 'MONTH') FROM dual;
+      eger ayin 15 inden once ise bulunulan ayin 1 ine yoksa bir sonraki ayin 1 ine yuvarlar
+      
+   SELECT ROUND (SYSDATE 'YEAR') FROM dual;   
+      Haziran oncesi ise bulunulan yilin 1 ocak ina yoka bir sonraki yila yuvarlar.
