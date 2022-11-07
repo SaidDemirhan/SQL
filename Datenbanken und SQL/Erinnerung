@@ -45,7 +45,7 @@ query builder penceresi sistemde olusturulan tablolari grafiksel olarak listeler
 ------------------------------------------------------
 Sorgulama: (SELECT)
 
-SELECT (kolon_adi) FROM (tablo_adi)
+SELECT (kolon_adi) FROM (tablo_adi);
    kolon adi yerine * isareti koyarak tüm tabloyu da listeleyebiliriz.
 
 -------------------------------------------------------
@@ -64,12 +64,12 @@ SELECT name isim  FROM (tablo_adi)
 ------------------------------------------------------
 Tekrar eden verilerin tekrarini önleme (DISTINCT)
 
-SELECT DISTINCT (kolon_adi) FROM (tablo_adi)
+SELECT DISTINCT (kolon_adi) FROM (tablo_adi);
 
 -----------------------------------------------------
 Iki kolonu birlestirerek listeleme: ( ||` `||)
 
-SELECT isim ||` `|| soyisim FROM personel
+SELECT isim ||` `|| soyisim FROM personel;
 
    istersek arasina bosluk yerine istenilen ifade de yazilabilir.
 
@@ -79,8 +79,68 @@ INT deger degisikligi icin matematiksel islemler kullanilarnilir.
 SELECT ad, soyad, maas*2 AS YeniYilMaasi FROM personel
 
 -----------------------------------------------------
+Isimlendirmelerde özel kelimelerin kullanilmamasi gerekir.
+Büyük veya kücük harf olmasi önemli degildir.
 
+#######################################################
 
+TABLO OLUSTURMA (CREATE TABLE)
+
+CREATE TABLE personel
+(adi varchar2(20),
+soyadi varchar(15),
+telefon_numarasi number(15)
+);
+
+------------------------------------------------------
+varchar: string olarak isimlendirilir, deger mutlaka tirnak icinde girilmelidir.
+number: Int deger girmeek icin kullanilir.
+------------------------------------------------------
+
+Tabloya veri girisi yapma: (INSERT INTO)
+
+INSERT INTO personel (adi, soyadi, telefon_numarasi) 
+VALUES ("Ahmet", "Delice", 05362856598); 
+
+veya veriler sirasiyla girilmek sartiyla:
+
+INSERT INTO personel VALUES ("Mehmet", "Akillica", 05432659875);
+
+----------------------------------------------------------
+
+Tabloya yeni bir sütun ekleme: (ALTER TABLE tablo_adi ADD kolon_adi varchar(10));)
+
+ALTER TABLE personel 
+ADD 
+email varchar(20));
+
+--------------------------------------------------------
+
+Tabloyu güncelleme; (MODIFY)
+
+ALTER TABLE personel
+MODIFY
+email varchar(25);
+
+   email alaninin 20 karakterden 25 karaktere cikartmis olduk.
+
+-------------------------------------------------------
+SILME
+
+Tabloyu silme: (DROP)
+
+DROP TABLE personel;
+
+Tablodan sütun silme: (DROP)
+
+ALTER TABLE personel DROP COLUMN email;
+
+-------------------------------------------------------
+Sütunu kullanim disi birakma: (SET UNUSED COLUMN)
+
+ALTER TABLE personel SET UNUSED COLUMN telefon_numarasi;
+
+------------------------------------------------------
 
 
 
