@@ -9,8 +9,78 @@ Truncate: Tablodaki kayitlari icerdikleri alanla birlikte siler
 Comment: yorum ekler
 Rename: Nesnenin adini degistirir.
 
+------------------------------------------------------
 DML : Data Manipulation Language (Veri Düzenleme Dili)
 
- 
+select: veri tabanindan kayit okur
+insert: tabloya kayit ekler
+update: tablodaki kaydi günceller
+delete: tablodaki kayitlari siler ancak kapladigi alan kalir
+merge, upsert: ekleme veya güncelleme yapar
+
+------------------------------------------------------
+DCL : Data Control Language (veri kontrol dili)
+
+grant: kullaniciya veri tabanina erisim yetkisi verir
+deny: Kullanicilarin haklarini kisitlar
+revoke: grant ile verilen yetkiyi geri alir
+
+------------------------------------------------------
+TCL : Transaction Control Language( islem kontrol dili)
+
+commit: yapilanlari kalici hale getirir, isin tamamlanmasini saglar
+savepoint: daha sonra geri dönülebilecek bir dönüs noktasi belirler.
+rollback: son commit e kadar olan yeri geri alir.
+
+------------------------------------------------------
+
+YORUM SATIRI (--)
+
+-- isaretini satir basina koymamiz yeterlidir.
+
+------------------------------------------------------
+
+query builder penceresi sistemde olusturulan tablolari grafiksel olarak listeler.(oracle)
+
+------------------------------------------------------
+Sorgulama: (SELECT)
+
+SELECT (kolon_adi) FROM (tablo_adi)
+   kolon adi yerine * isareti koyarak tüm tabloyu da listeleyebiliriz.
+
+-------------------------------------------------------
+Filtreleme: (WHERE)
+
+SELECT (kolon_adi) FROM (tablo_adi) WHERE (sartimiz)
+   WHERE diploma_notu>=70 AND cinsiyet= "E"
+
+-------------------------------------------------------
+Listedeki sütün adini istedigimiz gibi görüntüleme: (AS veya tirnak isreti vaya direkt yazma) 
+
+SELECT name AS isim  FROM (tablo_adi)  (tavsiye edilir)
+SELECT name "isim"  FROM (tablo_adi)
+SELECT name isim  FROM (tablo_adi)
+
+------------------------------------------------------
+Tekrar eden verilerin tekrarini önleme (DISTINCT)
+
+SELECT DISTINCT (kolon_adi) FROM (tablo_adi)
+
+-----------------------------------------------------
+Iki kolonu birlestirerek listeleme: ( ||` `||)
+
+SELECT isim ||` `|| soyisim FROM personel
+
+   istersek arasina bosluk yerine istenilen ifade de yazilabilir.
+
+-----------------------------------------------------
+INT deger degisikligi icin matematiksel islemler kullanilarnilir.
+
+SELECT ad, soyad, maas*2 AS YeniYilMaasi FROM personel
+
+-----------------------------------------------------
+
+
+
 
 
