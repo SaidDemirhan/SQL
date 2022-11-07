@@ -261,4 +261,43 @@ LPAD
    ise soluna istenilen isareti koymaya yarar.
    
 REPLACE
+   bir kalimeyi baska bir kelime ile degistirmeye yarar.
+   SELECT REPLACE ('oracle egitimi', 'oracle', 'SQL') FROM dual;
+      yani SQL egitimi sekline döner.
+      
+      *** dual demek sanal bir tablo olusturmak demektir.  
+      
+TRIM
+    bas ve sonundaki istenilmeyen karakterleri hesaba katmayarak length ini getirdi.
+    SELECT LENGT (TRIM(' ' FROM ' Ahmet')) FROM dual;
+      uzunlugu normalde 6 iken bosluklari cikartip 5 verecektir.
+      
+    SELECT TRIM (BOTH '2' FROM '232AHMET22')FROM dual;          //32AHMET
+      bas ve sonundaki istenilmeyenler silindi.
+      
+    SELECT TRIM(TRAILING '5' FROM '555Sari555') FROM dual;       //555Sari
+      yalnizca sonundaki istenilmeyenler gitti.
+    
+    SELECT TRIM(LEADING '5' FROM '555Sari555') FROM dual;         //Sari555
+      
+ -------------------------------------------------------------------
+ 
+ NUMBER FONKSIYONLARI
+ 
+ ROUND
+  yakin oldugu yere dogru yuvarlar, virgülden sonraki kismin kac basamak olmasini istersek onu yazariz.
+  sifirlar yazilmaz.
+  SELELCT ROUND (45.923,2)FROM dual;      //45,92
+  SELELCT ROUND (45.923,6)FROM dual;      //45,923
+  
+ TRUNC 
+  istisnasiz asagi degere yuvarlar
+  SELECT TRUNC (56.986,2) FROM dual       //56,98
+      
+ MOD
+  kalan degerleri yazdirir.
+  SELECT ad, soyad, maas,MOD (maas,1200) FROM personel WHERE maas>1200;
+   alinan maasi 1200 e bölerek  kalani yazdirir.
+      
+-------------------------------------------------------------------------   
    
