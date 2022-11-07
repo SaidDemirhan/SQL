@@ -59,6 +59,7 @@ Filtreleme: (WHERE)
 SELECT (kolon_adi) FROM (tablo_adi) WHERE (sartimiz)
    WHERE diploma_notu>=70 AND cinsiyet= "E"
 
+
 -------------------------------------------------------
 Listedeki sütün adini istedigimiz gibi görüntüleme: (AS veya tirnak isreti vaya direkt yazma) 
 
@@ -157,6 +158,41 @@ DELETE FROM personel WHERE isim='Abdurrahman';
    veya WHERE telefon_numarasi=05432659875;
 
    tablo  kalir secece veriler silinir!
+
+-------------------------------------------------------
+Karsilastirma Operatörleri
+
+= esittir
+      SELECT ad,soyad FROM personel WHERE maas=2000;
+< kücüktür
+> büyüktür
+>= büyük esit
+<= kücük esit
+<> esit degil
+BETWEEN ... AND ... =  arasinda
+      SELECT ad, soyad FROM personel WHERE maas BETWEEN  1000 AND 1500;
+        sayi olabilecegi gibi string degerler de olabilir.(tirnak i unutma)
+         SELECT ad, soyad FROM personel WHERE soyad BETWEEN 'Akillica AND 'Delice';
+IN icinde bulunmasi gereken degerler (50,60,70)
+      SELECT ad, soyad FROM personel WHERE maas IN (1000, 1500, 2000, 2500);
+LIKE karakter arama
+      SELECT isim FROM personel WHERE soyisim LIKE 'K%';
+         Soyadi k ile baslayanlarin isimlerini listelettirdik. int degerler de talep edilebilir.
+       SELECT isim, soyisim FROM personel WHERE soyisim LIKE '_a%';   
+         soyadinin ikinci karakteri a olanlarin adini ve soyadini getirir.
+IS NULL null degerlerini döndürür.
+      SELECT ad, soyad FROM personel WHERE email IS NULL;
+         e mail adresi bulunmayanlari getirir.
+IS NOT NULL null olmayan degerleri getirir.
+      SELECT ad, soyad FROM personel WHERE email IS NOT NULL;
+-------------------------------------------------------
+
+Mantiksal OPeratörler
+
+AND iki sartin birlikte olmasini ister
+OR iki sarttaan bir tanesinin olmasi yeterlidir.
+NOT degil olanlari getirir.
+
 
 
 
