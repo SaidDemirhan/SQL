@@ -321,3 +321,18 @@ TARRIHLER
       
    SELECT ROUND (SYSDATE 'YEAR') FROM dual;   
       Haziran oncesi ise bulunulan yilin 1 ocak ina yoka bir sonraki yila yuvarlar.
+         eger yuvarlanmasin denirse TRUNC da kullanilabilir.
+      
+   SELECT ad, soyad, kayit_tarihi, TO_CHAR(kayit_tarihi,'fmDD Month YYYY') AS tarih FROM personel;
+      to_char fonksiyonuyla bilgisayar dili ile 13 Ocak 2001 gibi bir tarih atilir.
+   
+   SELECT ad, soyad kayit_tarihi FROM personel WHERE kayit_tarihi< TO_DATE ('01/01/1997','DD/MM/RR');
+      to_date ile eger tarihlerini bilmedigimiz bir liste varsa bu sekilde anlasilir dile cevirtebilirirz.
+   
+---------------------------------------------------------------------------
+
+Dönüsüm Fonksiyonlari
+
+NVL
+
+SELECT ad, soyad, NVL
