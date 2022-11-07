@@ -49,10 +49,11 @@ SELECT (kolon_adi) FROM (tablo_adi);
    kolon adi yerine * isareti koyarak tüm tabloyu da listeleyebiliriz.
 
 -------------------------------------------------------
-Sorgulanan verilerin büyük/kücük harf seklinde listeleme: (LOWER/UPPER)
+Sorgulanan verilerin büyük/kücük harf seklinde listeleme: (LOWER/UPPER/INITCAP)
 
 SELECT LOWER (adi), UPPER(soyadi) FROM personel;
 
+INITCAP kelimelerin yalnizca ilk harflerini büyük yapar.
 -------------------------------------------------------
 Filtreleme: (WHERE)
 
@@ -73,11 +74,12 @@ Tekrar eden verilerin tekrarini önleme (DISTINCT)
 SELECT DISTINCT (kolon_adi) FROM (tablo_adi);
 
 -----------------------------------------------------
-Iki kolonu birlestirerek listeleme: ( ||` `||)
+Iki kolonu birlestirerek listeleme: ( ||' '||)
 
-SELECT isim ||` `|| soyisim FROM personel;
+SELECT isim ||' '|| soyisim FROM personel;
 
    istersek arasina bosluk yerine istenilen ifade de yazilabilir.
+   iki sütun arasindaki VIRGÜL yerine yazilmalidir.
 
 -----------------------------------------------------
 INT deger degisikligi icin matematiksel islemler kullanilarnilir.
@@ -193,6 +195,70 @@ AND iki sartin birlikte olmasini ister
 OR iki sarttaan bir tanesinin olmasi yeterlidir.
 NOT degil olanlari getirir.
 
+--------------------------------------------------------
+Siralama komutlari (ORDER BY)
 
+ASC : komutu default olarak gelir, yazmasak da bu sekilde siralayacaktir.
+   Kücükten büyüge dogru siralar
+   birden fazla sütun olarak siralama yapilabilir.
+   
+DESC : Büyükten kücüge siralam komututdur.
 
+   SELECT ad, soyad, email FROM personel ORDER BY soyad DESC;
+      Soyadlarin z den a ya dogru siralarandigini görürürz.
+      
+   SELECT ad, soyad, email FROM personel ORDER BY 3;   
+      3. sütünda ne varsa ona göre siralama yapilir.
 
+----------------------------------------------------------
+
+AMPERSAND (&)
+
+Program üzerinden databank taki istenilen bilginin bir degerini girerek bilgilerini getirmek icin kullanilir.
+
+SELECT ogrenci_no, ad, soyad, email FROM ögrenciler WHERE ögrenci_no= &Ögrenci_numasari_girirniz;
+
+----------------------------------------------------------
+Double Ampersand (&&)
+
+Bizden yeniden deger girmemmiz istenmeden son kaydi getirmeyi saglar.
+
+   SELECT ad, soyad, &&ogrenci_no FROM ogrenciler ORDER BY &ogrenci_no;
+   
+---------------------------------------------------------
+DEFINE ve &
+
+Kullanicidan deger almadan direkt deger verip sorguyu calistirmamizi saglar.
+
+   DEFINE ogrenci_no=20 
+   SELECT ad, soyad, email FROM ogrenciler 
+   WHERE ogrenci_numarasi=&ogrenci_no;
+   
+define yi kaldirmak icin UNDEFINED yazilip deger verilmeden atandigi yer ile birlikte calistirlmasi gerekir.   
+
+   UNDEFINE ogrenci_no; ....
+   
+---------------------------------------------------------   
+
+Character Manipulation
+
+CONCAT sütundaki degerleri birlestirir.
+LENGTH karakter sayisini getirir.
+INSTR sorgulanan karakterin kacinci sirada oldugunu getirir.
+SUBSTR sondan zb. 4 kaarakter istenilen karakterlerle bitiyor mu..
+
+   SELECT ogrenci_no, CONCAT(ad,soyad) AS kimlik, LENGTH (soyad) AS soyad_uzunlugu, INSTR(soyad, 'e') AS soyaddaki_e_sirasi
+   FROM ogrenciler WHERE SUBSTR (email,10)='@gmail.com';
+      Email adresi gmail olanlarin soyad uzunlugu ve soyadinda e harfinin sirasi tespit ediliyor.
+  
+RPAD 
+   '*' belli bir length e tamamlanmasi gerekiyorsa kullanilir
+
+   SELECT ogrenci_no, RPAD (ogrenci_no,3,'*') FROM  ogrenciler;
+      eger 3 basamaklidan dah kücük bir ögrenci numarasi varsa arkasina * veya istenilen bir karakter eklenir.
+      
+LPAD
+   ise soluna istenilen isareti koymaya yarar.
+   
+REPLACE
+   
