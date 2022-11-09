@@ -335,6 +335,37 @@ Dönüsüm Fonksiyonlari
 
 NVL
 
-SELECT ad, soyad, NVL
+Eger null degerlere aile satirlarla islem yapilirsa bu islemlerin sonucu da nul oluyor, bunu engellemek icin bu komut mevcut.
 
-31. videoda kalindi...
+NULLIF 
+
+Eger iki deger ayni ise null yazdirma fonksiyonudur.
+
+COALESCE
+
+Eger iki deger de null ise istenilen notun yazilmasini saglar.
+
+CASE 
+
+WHEN THEN ve ELSE ile kulanilir
+
+--------------------------------------------------------------------
+
+Grup fonksiyon türleri
+
+AVG - ortalama islemi
+
+COUNT - deger veya sayi
+
+MAX ve MIN - en yüksek ve düsük degerleri döndürür.
+
+STDDEV - Standart hatalarin tespitini yapar
+
+SUM - toplami verir.
+
+VARIANCE
+
+
+
+
+
