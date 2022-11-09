@@ -475,3 +475,4 @@ UNION - UNION ALL : hepsini ifade eder.
   SELECT soyad FROM personel
 MINUS : Kesisimde olmayan ama sadece ilk listede olani verir.
 
+39. video
