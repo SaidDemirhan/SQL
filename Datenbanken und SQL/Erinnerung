@@ -211,7 +211,17 @@ DESC : Büyükten kücüge siralam komututdur.
       3. sütünda ne varsa ona göre siralama yapilir.
 
 ----------------------------------------------------------
+Gruplandirma komutlari (GROUP BY)
 
+GROUP BY : sorgularimizi belirli bir alana göre gruplandirir.
+
+HAVING : WHERE ile ayni görevi yapar, HAVING; GROUP BY yapisi icinde kullanilmalidir.
+
+   SELECT  soyad, MAX(maas) FROM personel
+   GROUP BY soyad
+   HAVING MAX(maas)>2000;
+
+----------------------------------------------------------
 AMPERSAND (&)
 
 Program üzerinden databank taki istenilen bilginin bir degerini girerek bilgilerini getirmek icin kullanilir.
@@ -333,9 +343,10 @@ TARRIHLER
 
 Dönüsüm Fonksiyonlari
 
-NVL
+NVL NVL2
 
-Eger null degerlere aile satirlarla islem yapilirsa bu islemlerin sonucu da nul oluyor, bunu engellemek icin bu komut mevcut.
+istenilmeyen bir degeri cikarma isine yarar
+örnegin eger null degerlere ile satirlarla islem yapilirsa bu islemlerin sonucu da null oluyor, bunu engellemek icin bu komut mevcut.
 
 NULLIF 
 
@@ -354,18 +365,96 @@ WHEN THEN ve ELSE ile kulanilir
 Grup fonksiyon türleri
 
 AVG - ortalama islemi
+   SELECT AVG(yilsonu_notu) FROM tablo
+   WHERE ...
+      Eger yil sonu notu 0 olan varsa bunu cikartmak icin NVL fonksiyonu kullanilir.
+      SELECT AVG(NVL(ogrenci_notu,0)) FROM ogrenciler
+   
 
 COUNT - deger veya sayi
+   SELECT COUNT(*) FROM ogrenciler
+   WHERE ogrenci_notu=50;
+      notu 50 olan kac ogrenci varsa onu sadece sayi olarak getirecektir.
+      
+   SELECT COUNT(DISTINCT ogrenci_notu) FROM ogrenciler;
+      tekrarlamayan ögrenci notu sayisini getirir.
 
 MAX ve MIN - en yüksek ve düsük degerleri döndürür.
+   SELECT MAX(maas) FROM personel;
 
 STDDEV - Standart hatalarin tespitini yapar
 
 SUM - toplami verir.
+   SELECT SUM(maas) FROM personel;
+   
+VARIANCE - varyansi verir
 
-VARIANCE
+****** birkac fonksiyon bir arada kullanilabilir.
+
+** WHERE ifadesi ie bu komutlar kullanilmaz, HAVING ile kullanilir.
+
+-------------------------------------------------
+
+JOIN
 
 
+iki ya da daha fazla tabloyu ayni anda sorgulayip sonuc tablosu olusturmak icin kullaniriz.
 
+CROSS JOIN
+   iliskili olsun veya olmasin tüm satirlari gösterir.
+   SELECT kolon_adi FROM tabloA CROSS JOIN tabloB 
+   
+INNER JOIN
+   kesisim alanini listeler.
+   SELECT kolon_adi FROM tabloA INNER JOIN tabloB ON tabloA.soyadi=tabloB.soyadi
+   
+LEFT JOIN   
+   ilk tabloda olanlari getirir. kesisenleri zaten ilk tabloda da olacaktir sadece 2. tabloya özel olanlari göremeyiz.
+   SELECT kolon_adi FROM tabloA LEFT JOIN tabloB ON tabloA.soyadi=tabloB.soyadi
 
+   eger yalnizca Ada olanlari isteseydik;
+   SELECT kolon_adi FROM tabloA LEFT JOIN tabloB ON tabloA.soyadi=tabloB.soyadi WHERE tabloB.soyadi is Null
+   
+RIGHT JOIN
+   ikinci tabloda olanlari getirir. KESISIM dahil!
+   SELECT kolon_adi FROM tabloA RIGHT JOIN tabloB ON tabloA.soyadi=tabloB.soyadi
+
+   eger kesisim istenmeseydi
+   SELECT kolon_adi FROM tabloA RIGHT JOIN tabloB ON tabloA.soyadi=tabloB.soyadi WHERE tabloA.soyadi is Null
+
+   Eger kesisim noktasini degil de sadece ilk tabloda ve sadece 2. tabloda olanlari isteseydik;
+   SELECT kolon_adi FROM tabloA RIGHT JOIN tabloB ON tabloA.soyadi=tabloB.soyadi WHERE (tabloA.soyadi is Null) OR (tabloB.soyadi is Null)
+   
+FULL JOIN
+   ilk tabloda ve ikinci tabloda olan verileri tekrarlamadan getirir.
+   SELECT kolon_adi FROM tabloA FULL JOIN tabloB ON tabloA.soyadi=tabloB.soyadi
+   
+   **** full outer joiin, right outer join, left outer join seklinde kullanimi yaygin.
+   inner joini de sadece JOIN olarak da kullanana var
+   
+   ### eger uzun uzun tablo ismi yazilmak istenmiyorsa;
+    SELECT kolon_adi FROM tabloA a RIGHT JOIN tabloB b ON a.soyadi=b.soyadi 
+    
+---------------------------------------------------------------
+
+Ic ice SELECT
+
+SELECT adi, soyadi, maas FROM personel
+WHERE maas >
+(SELECT maas FROM personel
+WHERE adi='Deniz');
+   adi Deniz olan kisinin maasindan daha yüksek maas alanlari getirir.
+   
+ANY : olumsuzluk kelimesidir   
+  .... WHERE maas > ANY (SELECT .... seklinde yazilir 
+  
+ALL : ayni ANY gibi kullanilir ve istenilenlerin hepsini getirir.  
+
+IN de kullanilir.
+
+---------------------------------------------------------------
+
+desc tablo_adi
+
+yazarak tablodaki deger ve ayrintilarini rahatca görebiliriz.
 
