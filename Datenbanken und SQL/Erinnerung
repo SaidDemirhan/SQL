@@ -161,6 +161,12 @@ DELETE FROM personel WHERE isim='Abdurrahman';
 
    tablo  kalir secece veriler silinir!
 
+****TRUNCATE : Delete ile aynidir, geri dönüsü yoktur.
+  WHERE ile birlikte kullanilamaz.
+    TRUNCATE TABLE personel;
+    
+### ROLLBACK ile geri dönüm noktasi olustur.
+  ROLLBACK SELECT * FROM personel;
 -------------------------------------------------------
 Karsilastirma Operatörleri
 
@@ -457,4 +463,15 @@ IN de kullanilir.
 desc tablo_adi
 
 yazarak tablodaki deger ve ayrintilarini rahatca görebiliriz.
+
+--------------------------------------------------------------
+
+SET Operatörleri
+
+INTERSECT :kesisimini ifade eder
+UNION - UNION ALL : hepsini ifade eder.
+  SELECT soyad FROM ogrenciler
+  UNION
+  SELECT soyad FROM personel
+MINUS : Kesisimde olmayan ama sadece ilk listede olani verir.
 
