@@ -90,7 +90,7 @@ SELECT ad, soyad, maas*2 AS YeniYilMaasi FROM personel
 Isimlendirmelerde özel kelimelerin kullanilmamasi gerekir.
 Büyük veya kücük harf olmasi önemli degildir.
 
-#######################################################
+#####################################################
 
 TABLO OLUSTURMA (CREATE TABLE)
 
