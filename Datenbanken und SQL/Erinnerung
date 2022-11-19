@@ -9,7 +9,7 @@ Truncate: Tablodaki kayitlari icerdikleri alanla birlikte siler
 Comment: yorum ekler
 Rename: Nesnenin adini degistirir.
 
------------------------------------------------------
+------------------------------------------------------
 DML : Data Manipulation Language (Veri Düzenleme Dili)
 
 select: veri tabanindan kayit okur
@@ -18,14 +18,14 @@ update: tablodaki kaydi günceller
 delete: tablodaki kayitlari siler ancak kapladigi alan kalir
 merge, upsert: ekleme veya güncelleme yapar
 
-------------------------------------------------------
+-------------------------------------------------------
 DCL : Data Control Language (veri kontrol dili)
 
 grant: kullaniciya veri tabanina erisim yetkisi verir
 deny: Kullanicilarin haklarini kisitlar
 revoke: grant ile verilen yetkiyi geri alir
 
-------------------------------------------------------
+-------------------------------------------------------
 TCL : Transaction Control Language( islem kontrol dili)
 
 commit: yapilanlari kalici hale getirir, isin tamamlanmasini saglar
