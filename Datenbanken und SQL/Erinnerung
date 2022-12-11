@@ -9,7 +9,7 @@ Truncate: Tablodaki kayitlari icerdikleri alanla birlikte siler
 Comment: yorum ekler
 Rename: Nesnenin adini degistirir.
 
---------------------------------------------------------
+------------------------------------------------------
 DML : Data Manipulation Language (Veri Düzenleme Dili)
 
 select: veri tabanindan kayit okur
